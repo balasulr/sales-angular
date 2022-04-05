@@ -18,8 +18,8 @@
         <tr *ngFor="let o of orders">
             <td>{{ o.id }}</td>
             <td>{{ o.description }}</td>
-            <td>{{ o.shipped }}</td> <!-- Ternery statement -->
-            <td>{{ o.total | currency }}</td>
+            <td>{{ o.shipped | boolDisplay}}</td> <!-- Added a pipe that was created in bool-display.pipe.ts -->
+            <td>{{ o.total | currency }}</td> <!--  The vertical bar is a pipe character & what comes after is the pipe -->
             <td>{{ o.customer.name }}</td>
             <td>
                 <a routerLink="/order/detail/{{ o.id }}">Detail</a> | <!-- Make sure matches route for detail on app-routing.module.ts -->

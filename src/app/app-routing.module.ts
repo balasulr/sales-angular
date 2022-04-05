@@ -12,6 +12,8 @@ import { OrderDetailComponent } from './sales/order/order-detail/order-detail.co
 import { OrderEditComponent } from './sales/order/order-edit/order-edit.component';
 import { OrderListComponent } from './sales/order/order-list/order-list.component';
 
+import { EmployeeLoginComponent } from './sales/employee/employee-login/employee-login.component';
+
 const routes: Routes = [ // Added below code here
   { path: "", redirectTo: "/home", pathMatch:"full"}, // First one all of the time & looks in order
   { path: "home", component: HomeComponent},
@@ -26,6 +28,8 @@ const routes: Routes = [ // Added below code here
   { path: "order/create", component: OrderCreateComponent},
   { path: "order/detail/:id", component: OrderDetailComponent},
   { path: "order/edit/:id", component: OrderEditComponent},
+
+  { path: "login", component: EmployeeLoginComponent},
 
   { path: "**", component: E404Component} // This must always be the last one in the list
 ];

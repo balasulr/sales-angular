@@ -1,9 +1,10 @@
 <app-menu></app-menu>
-<div> <!-- Added -->
+<div>
     <span id="pageTitle">Customer List</span> |
-    <a routerLink="/customer/create">New</a>
+    <a routerLink="/customer/create">New</a> |
+    <input [(ngModel)]="searchCriteria" type="text" placeholder="Search"> <!-- searchCriteria comes from customer-search.pipe.ts -->
 </div>
-<table class="table table-sm table-hover table-bordered">
+<table class="table table-striped table-sm">
     <thead>
         <tr>
             <th>Id</th>
@@ -11,17 +12,17 @@
             <th>Active</th>
             <th>StateCode</th>
             <th>Sales</th>
-            <th>Actions</th> <!-- Added -->
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let c of customers">
+        <tr *ngFor="let c of customers | customerSearch:searchCriteria"> <!-- searchCriteria comes from customer-search.pipe.ts -->
             <td>{{ c.id }}</td>
             <td>{{ c.name }}</td>
-            <td>{{ (c.active ? "Yes" : "No") }}</td> <!-- Ternery statement -->
+            <td>{{ c.active | boolDisplay:"fr" }}</td> <!-- Had Ternery statement inside of the td & {{}}: (c.active ? "Yes" : "No"). Also, showing the yes/no showing up in French-->
             <td>{{ c.stateCode }}</td>
-            <td>{{ c.sales | currency }}</td>
-            <td> <!-- Added -->
+            <td>{{ c.sales | currency }}</td> <!-- Currency is a pipe -->
+            <td>
                 <a routerLink="/customer/detail/{{ c.id }}">Detail</a> | <!-- Make sure matches route for detail on app-routing.module.ts -->
                 <a routerLink="/customer/edit/{{ c.id }}">Edit</a>
             </td>

@@ -10,6 +10,7 @@ import { CustomerService } from '../customer.service';
 export class CustomerListComponent implements OnInit {
   // Added Property
   customers: Customer[] = [];
+  searchCriteria: string = ""; // searchCriteria comes from customer-search.pipe.ts
 
   constructor(
     private custsvc: CustomerService // Added
