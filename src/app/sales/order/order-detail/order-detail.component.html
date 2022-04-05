@@ -1,0 +1,34 @@
+<app-menu></app-menu>
+<div>
+    <span id="pageTitle">Order Detail</span>
+</div>
+<table class="table table-sm" *ngIf="order"> <!-- There is a delay before data shows so use ngIf -->
+    <tbody>
+        <tr>
+            <th>Id:</th>
+            <td><input [(ngModel)]="order.id" type="number" disabled></td>
+        </tr>
+        <tr>
+            <th>Description:</th>
+            <td><input [(ngModel)]="order.description" type="text" disabled></td>
+        </tr>
+        <tr>
+            <th>Shipped:</th>
+            <td><input [(ngModel)]="order.shipped" type="checkbox" disabled></td>
+        </tr>
+        <tr>
+            <th>Total:</th>
+            <td><input [(ngModel)]="order.total" type="text" disabled></td>
+        </tr>
+        <tr>
+            <th>Customer:</th>
+            <td><input [(ngModel)]="order.customer.name" type="text" disabled></td> <!-- Just want name of customer attached to order -->
+        </tr>
+    </tbody>
+</table>
+<div>
+    <button (click)="remove()" class="btn btn-danger">Delete</button> <!-- Methods in customer-detail.component.ts -->
+    <span *ngIf="showVerifyButton">
+        | <button (click)="verifyRemove()" class="btn btn-danger">Verify Delete</button>
+    </span>
+</div>

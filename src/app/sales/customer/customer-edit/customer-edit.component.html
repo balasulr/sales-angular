@@ -1,2 +1,29 @@
 <app-menu></app-menu>
-<p>customer-edit works!</p>
+<div> <!-- Added what's below -->
+    <span id="pageTitle">Customer Change</span>
+</div>
+<table *ngIf="customer" class="table table-sm"> <!-- There is a delay before data shows so use ngIf -->
+    <tr>
+        <th>Id:</th>
+        <td><input [(ngModel)]="customer.id" type="number" readonly></td>
+    </tr>
+    <tr>
+        <th>Name:</th>
+        <td><input [(ngModel)]="customer.name" type="text"></td>
+    </tr>
+    <tr>
+        <th>State:</th>
+        <td><input [(ngModel)]="customer.stateCode" type="text"></td>
+    </tr>
+    <tr>
+        <th>Sales:</th>
+        <td><input [(ngModel)]="customer.sales" type="currency" disabled></td> <!-- Sales = calculated number & don't want to be inputted by user -->
+    </tr>
+    <tr>
+        <th>Active:</th>
+        <td><input [(ngModel)]="customer.active" type="checkbox"></td>
+    </tr>
+</table>
+<div>
+    <button (click)="save()" class="btn btn-primary">Save</button> 
+</div>

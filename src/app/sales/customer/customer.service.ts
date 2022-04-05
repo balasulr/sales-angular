@@ -29,7 +29,7 @@ export class CustomerService {
   }
 
   // Put/ Change Method
-  change(customer: Customer): Observable<any> { // any denotes will
+  change(customer: Customer): Observable<any> { // any denotes that any type
     return this.http.put(`${this.baseUrl}/${customer.id}`, customer) as Observable<any>;
   }
 

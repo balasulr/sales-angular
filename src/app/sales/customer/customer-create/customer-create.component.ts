@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Customer } from '../customer.class';
+import { CustomerService } from '../customer.service';
 
 @Component({
   selector: 'app-customer-create',
@@ -6,8 +9,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer-create.component.css']
 })
 export class CustomerCreateComponent implements OnInit {
+  // Added all below: Property
+  customer: Customer = new Customer(); // Give a new instance of Customer
 
-  constructor() { }
+  constructor( // Injecting services as a parameter
+    private custsvc: CustomerService,
+    private router: Router
+  ) { }
+
+  save(): void {
+    this.custsvc.create(this.customer).subscribe ({
+      next: (res) => {
+        console.debug("Customer added");
+        this.router.navigateByUrl("/customer/list")
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
+  }
 
   ngOnInit(): void {
   }
